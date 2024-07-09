@@ -53,7 +53,7 @@ const PersonalRoom = () => {
     router.push(`/meeting/${meetingId}?personal=true`);
   };
 
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
+  // const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
   /** */
   const meetLink=`meeting/${meetingId}?personal=true`;
   /** */
@@ -64,23 +64,12 @@ const PersonalRoom = () => {
       <div className="flex w-full flex-col gap-8 xl:max-w-[900px]">
         <Table title="Topic" description={`${user?.username}'s Meeting Room`} />
         <Table title="Meeting ID" description={meetingId!} />
-        <Table title="Invite Link 1" description={meetingLink} />
-        <Table title="Invite Link 2" description={meetLink} />
+{/*         <Table title="Invite Link 1" description={meetingLink} /> */}
+        <Table title="Invite Link" description={meetLink} />
       </div>
       <div className="flex gap-5">
         <Button className="bg-blue-1" onClick={startRoom}>
           Start Meeting
-        </Button>
-        <Button
-          className="bg-dark-3"
-          onClick={() => {
-            navigator.clipboard.writeText(meetingLink);
-            toast({
-              title: "Link Copied",
-            });
-          }}
-        >
-          Copy Invitation 1
         </Button>
         <Button
           className="bg-dark-3"
@@ -91,8 +80,19 @@ const PersonalRoom = () => {
             });
           }}
         >
-          Copy Invitation 2
+          Copy Invitation 
         </Button>
+{/*         <Button
+          className="bg-dark-3"
+          onClick={() => {
+            navigator.clipboard.writeText(meetLink);
+            toast({
+              title: "Link Copied",
+            });
+          }}
+        >
+          Copy Invitation 2
+        </Button> */}
       </div>
     </section>
   );
